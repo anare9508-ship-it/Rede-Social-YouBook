@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="YouBook - A sua melhor rede social para conectar e compartilhar.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="YouBook Team">
+  <meta name="robots" content="index, follow">
+  
+  <!-- CONEXÃO CSS -->
+  <link rel="stylesheet" href="index.css">
+  
+  <!-- ÍCONE -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- CONEXÃO PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0B0F19">
+
+  <title>YouBook - Rede Social</title>
+</head>
+<body>
+
+  <!-- CABEÇALHO PRINCIPAL -->
+  <header id="cabecalho-principal" class="cabecalho">
+    <div class="logo-e-titulo">
+      <h1 id="titulo-principal" class="titulo">YouBook</h1>
+      <p id="subtitulo-principal" class="subtitulo">
+        Melhor <strong id="destaque-rede-social" class="texto-destaque">Rede Social</strong>
+      </p>
+    </div>
+
+    <!-- FORMULÁRIO DE PESQUISA -->
+    <form id="form-pesquisa" class="form-pesquisa" role="search" onsubmit="event.preventDefault(); pesquisar();">
+      <input 
+        type="search" 
+        id="pesquisa" 
+        class="campo-pesquisa" 
+        name="q" 
+        maxlength="150" 
+        placeholder="Pesquisar no YouBook..." 
+        aria-label="Caixa de Pesquisa"
+        autocomplete="off"
+        spellcheck="true">
+      <button type="submit" id="btn-pesquisar" class="botao-pesquisar" aria-label="Buscar">🔍</button>
+    </form>
+
+    <!-- NAVEGAÇÃO E AUTENTICAÇÃO -->
+    <nav id="navegacao-principal" class="navegacao">
+      <button 
+        type="button" 
+        id="btn-cadastrar" 
+        class="botao-cadastrar" 
+        onclick="abrirCadastro()"
+        aria-label="Criar uma conta no YouBook"
+        title="cadastrar">
+        cadastrar
+      </button>
+      <button 
+        type="button" 
+        id="btn-entrar" 
+        class="botao-entrar" 
+        onclick="fazerLogin()"
+        aria-label="Entrar no YouBook"
+        title="Entrar">
+        Entrar
+      </button>
+    </nav>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main id="conteudo-principal" class="conteudo">
+
+    <p id="mensagem-slogan" class="slogan">
+      <strong id="destaque-slogan" class="texto-destaque">Seja Legal</strong>
+    </p>
+
+    <!-- SEÇÃO DE PUBLICAÇÃO -->
+    <section id="secao-postagem" class="secao-postagem">
+      <form id="form-postagem" onsubmit="event.preventDefault(); publicarPost();">
+        
+        <textarea 
+          id="campo-postagem" 
+          class="teclado" 
+          name="conteudo_post" 
+          cols="30" 
+          rows="3" 
+          maxlength="280" 
+          placeholder="O que está acontecendo?"
+          aria-label="Caixa de publicação"
+          autocomplete="off"
+          spellcheck="true"
+          required></textarea>
+
+        <div id="container-acoes-postagem" class="acoes-postagem">
+          <button 
+            type="button" 
+            id="btn-mais" 
+            class="botao-mais" 
+            onclick="abrirOpcoes()"
+            aria-label="Adicionar mídia ou opções"
+            title="Adicionar opções"
+            data-acao="opcoes">
+            +
+          </button>
+
+          <button 
+            type="submit" 
+            id="btn-publicar" 
+            class="botao-publicar" 
+            aria-label="Publicar conteúdo"
+            title="Publicar"
+            data-acao="publicar">
+            Publicar
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <ul id="lista-navegacao-feed" class="lista-feed" aria-label="Menu de navegação do feed">
+      <li id="item-feed" class="item-feed" title="Feed" aria-label="Feed" onclick="renderizarFeed()">
+        Feed
+      </li>
+      <li id="item-tela-inicial" class="item-feed" title="Tela inicial" aria-label="Tela inicial">
+        Tela inicial 
+      </li>
+    </ul>
+
+    <p id="Copyright" class="Copyright" title="Copyright" aria-label="Copyright">© 2026 <strong id="Copy" class="Copy" title="Copy" aria-label="Copy">YouBook</strong> Todos os direitos reservados &reg;</p>
+
+  </main>
+
+  <!-- TEMPLATE OCULTO PARA ESTRUTURA DE PUBLICAÇÕES (IMPERCEPTÍVEL AO USUÁRIO) -->
+  <template id="template-post">
+    <li class="post-item">
+      <div class="post-conteudo">
+        <strong class="post-autor"></strong>
+        <p class="post-texto"></p>
+        <small class="post-data"></small>
+        <div class="post-acoes">
+          <button type="button" class="acao-curtir">❤️ <span class="num-curtidas">0</span></button>
+          <button type="button" class="acao-comentar">💬 Comentar</button>
+          <button type="button" class="acao-deletar">🗑 Excluir</button>
+        </div>
+      </div>
+    </li>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
